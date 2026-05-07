@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Sidebar } from './components/Sidebar';
 import { Dashboard } from './components/Dashboard';
@@ -56,7 +56,7 @@ export function App() {
           {/* Desktop Sidebar - hidden on mobile/tablet */}
           <div className="hidden lg:block">
             <Sidebar
-              currentPage={currentPage}
+              currentPage={currentPage === 'milestones' ? 'dashboard' : currentPage}
               onNavigate={setCurrentPage}
               currentStage={currentStage} />
             
@@ -148,7 +148,15 @@ export function App() {
                         {currentStage === '1' &&
                       <ProfileCard currentStage={currentStage} />
                       }
-                        <UpcomingMilestones currentStage={currentStage} />
+                        {isAdmin ? (
+                          <div className="bg-transparent md:bg-white md:rounded-[8px] md:border md:border-[#dee2e6] md:p-5 md:shadow-sm mt-4">
+                            <h3 className="text-[14px] font-bold text-[#212529] uppercase tracking-wide mb-4">
+                              Upcoming Milestones
+                            </h3>
+                          </div>
+                        ) : (
+                          <UpcomingMilestones currentStage={currentStage} />
+                        )}
                       </div>
                     </aside>
                   </div>
