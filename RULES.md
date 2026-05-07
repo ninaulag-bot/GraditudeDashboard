@@ -1,0 +1,6 @@
+- Always use the existing Mantine components already in this project
+- Never install new UI libraries
+- Never change existing component styling
+- Match the exact colors, spacing, and font sizes already used
+- When building anything new, reference the existing components in src/components as examples
+- Do not change any existing files unless explicitly asked

@@ -1,0 +1,167 @@
+/* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
+
+@font-face {
+  font-family: 'FiraCode VariableFont Wght';
+  src: url('https://cdn.magicpatterns.com/uploads/ic2EmTtQBkhP5BoTzGFUba/FiraCode-VariableFont_wght.ttf');
+  font-display: swap;
+}
+/* Mantine-aligned design tokens
+   Legacy --brand-purple / --brand-indigo names are preserved for compatibility
+   but now point to Mantine blue (#228be6) so nothing renders as purple. */
+:root {
+  --brand-blue: #228be6;
+  --brand-blue-hover: #1c7ed6;
+  --brand-purple: #228be6;
+  --brand-indigo: #1c7ed6;
+  --canvas: #f1f3f5;
+  --card: #ffffff;
+  --rationale: #e7f5ff;
+  --chrome: #212529;
+  --chrome-text-primary: #f8f9fa;
+  --chrome-text-secondary: #adb5bd;
+  --chrome-border: #343a40;
+  --text-heading: #212529;
+  --text-body: #495057;
+  --text-secondary: #868e96;
+  --text-disabled: #adb5bd;
+  --text-link: #228be6;
+  --border-default: #dee2e6;
+  --border-subtle: #e9ecef;
+  --border-strong: #adb5bd;
+  --border-focus: #228be6;
+  --border-error: #fa5252;
+  --status-success: #15803d;
+  --status-success-bg: #dcfce7;
+  --status-warning: #92400e;
+  --status-warning-bg: #fff3bf;
+  --status-error: #c92a2a;
+  --status-error-bg: #ffe3e3;
+  --status-info: #1971c2;
+  --status-info-bg: #e7f5ff;
+  --quality-high: #15803d;
+  --quality-high-bg: #dcfce7;
+  --quality-high-text: #14532d;
+  --quality-medium: #92400e;
+  --quality-medium-bg: #fff3bf;
+  --quality-medium-text: #5c3d00;
+  --quality-low: #c92a2a;
+  --quality-low-bg: #ffe3e3;
+  --quality-low-text: #7f1d1d;
+}
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  color: #212529;
+  background-color: #ffffff;
+}
+/* Mobile-only org card overrides (max-width: 768px). Stacks the
+   organization card header into a single column and stacks the program
+   sub-card title/pill/members vertically while keeping View Program
+   right-aligned on a single line. */
+@media (max-width: 768px) {
+  .org-card-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+  .org-card-view-org-btn {
+    align-self: flex-start !important;
+    width: auto !important;
+  }
+  .program-subcard-title-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+  }
+  .program-subcard-pill {
+    width: max-content !important;
+  }
+  .program-subcard-title {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+  }
+  .program-subcard-button {
+    white-space: nowrap !important;
+  }
+}
+/* Default visibility for the mentor card pills layouts. The default
+   horizontal/vertical layout is shown everywhere; the iPad stacked
+   accordion is hidden until the media query below activates it. */
+.mentor-pills-default {
+  display: block;
+}
+.mentor-pills-ipad {
+  display: none;
+}
+/* iPad 13" only overrides. Scoped strictly to 1024–1366px so desktop and
+   mobile stay untouched. */
+@media (min-width: 1024px) and (max-width: 1366px) {
+  /* Mentor card — swap to stacked accordion at iPad widths only when the
+     right panel is open (the main column is narrower). When the right panel
+     is collapsed, the main column has more room and the original horizontal
+     layout works fine. */
+  [data-right-panel='open'] .mentor-pills-default {
+    display: none !important;
+  }
+  [data-right-panel='open'] .mentor-pills-ipad {
+    display: block !important;
+  }
+  /* Strong nudge card — stack actions vertically at iPad widths */
+  .strong-nudge-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+  .strong-nudge-actions-buttons {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .strong-nudge-send,
+  .strong-nudge-schedule {
+    width: 100% !important;
+  }
+  .strong-nudge-dismiss {
+    align-self: center !important;
+    text-align: center !important;
+  }
+  /* Mentor match suggestion card */
+  .mentor-match-card .mentor-match-inline-view-profile {
+    display: none !important;
+  }
+  .mentor-match-card .mentor-match-stacked-view-profile {
+    display: inline-flex !important;
+  }
+  .mentor-match-card .mentor-match-text h3,
+  .mentor-match-card .mentor-match-text p {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+  /* Org card — Your Programs sub-card */
+  .org-programs-section {
+    margin-top: 28px !important;
+  }
+  .program-subcard {
+    padding: 18px !important;
+  }
+  .program-subcard-title-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+  }
+  .program-subcard-pill {
+    width: max-content !important;
+    margin-top: 2px !important;
+  }
+  .program-subcard-button {
+    white-space: nowrap !important;
+  }
+}
